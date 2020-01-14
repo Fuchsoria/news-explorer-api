@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
-const { celebrate, Joi } = require('celebrate');
 const routes = require('./routes');
 const { login, createUser } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { SERVER_PORT, DB, limiter } = require('./configuration/config');
 const { errorHandler } = require('./middlewares/errorHandler');
+const { signinRequestCheck, signupRequestCheck } = require('./modules/validations');
 
 require('dotenv').config();
 
@@ -29,19 +29,8 @@ app.use(bodyParser.json());
 // Логирование запросов
 app.use(requestLogger);
 
-app.post('/signin', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required(),
-    password: Joi.string().required(),
-  }),
-}), login);
-app.post('/signup', celebrate({
-  body: Joi.object().keys({
-    email: Joi.string().required(),
-    password: Joi.string().required().min(1),
-    name: Joi.string().required().min(2).max(30),
-  }),
-}), createUser);
+app.post('/signin', signinRequestCheck, login);
+app.post('/signup', signupRequestCheck, createUser);
 
 app.use('/', auth, routes);
 
