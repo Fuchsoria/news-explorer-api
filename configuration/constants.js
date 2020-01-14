@@ -8,6 +8,7 @@ const EMAIL_ALREADY_EXISTS = 'Пользователь с данной почт�
 const INVALID_EMAIL = 'Неверный формат электронной почты';
 const INVALID_LINK = 'Неверный формат ссылки';
 const BAD_REQUEST = 'Некорректный запрос';
+const SERVER_ERROR = 'На сервере произошла ошибка';
 
 module.exports = {
   UNAUTHORIZED,
@@ -20,4 +21,5 @@ module.exports = {
   INVALID_EMAIL,
   INVALID_LINK,
   BAD_REQUEST,
+  SERVER_ERROR,
 };

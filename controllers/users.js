@@ -4,6 +4,7 @@ const User = require('../models/user');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const BadRequestError = require('../errors/BadRequest');
 const ConflictError = require('../errors/Conflict');
+const { INVALID_EMAIL_OR_PASSWORD } = require('../configuration/constants');
 
 const {
   EMAIL_ALREADY_EXISTS,
@@ -39,11 +40,11 @@ const login = (req, res, next) => {
     .select('+password')
     .then((user) => {
       if (!user) {
-        throw new UnauthorizedError('Неправильная почта или пароль');
+        throw new UnauthorizedError(INVALID_EMAIL_OR_PASSWORD);
       }
       return bcrypt.compare(password, user.password).then((matched) => {
         if (!matched) {
-          throw new UnauthorizedError('Неправильная почта или пароль');
+          throw new UnauthorizedError(INVALID_EMAIL_OR_PASSWORD);
         }
         const token = jwt.sign({ _id: user._id }, SECRET, {
           expiresIn: '7d',
@@ -62,7 +63,7 @@ const login = (req, res, next) => {
 };
 
 const getMyUser = (req, res, next) => {
-  User.findOne(req.user._id)
+  User.findOne({ _id: req.user._id })
     .then((user) => res.status(200).send(user))
     .catch(next);
 };
