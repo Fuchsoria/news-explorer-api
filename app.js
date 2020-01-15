@@ -12,8 +12,6 @@ const { SERVER_PORT, DB, limiter } = require('./configuration/config');
 const { errorHandler } = require('./middlewares/errorHandler');
 const { signinRequestCheck, signupRequestCheck } = require('./modules/validations');
 
-require('dotenv').config();
-
 const app = express();
 
 mongoose.connect(DB, {
