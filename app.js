@@ -4,13 +4,10 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const routes = require('./routes');
-const { login, createUser } = require('./controllers/users');
 const { corsCheck } = require('./middlewares/cors');
-const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { SERVER_PORT, DB, limiter } = require('./configuration/config');
 const { errorHandler } = require('./middlewares/errorHandler');
-const { signinRequestCheck, signupRequestCheck } = require('./modules/validations');
 
 const app = express();
 
@@ -29,10 +26,7 @@ app.use(bodyParser.json());
 // Логирование запросов
 app.use(requestLogger);
 
-app.post('/signin', signinRequestCheck, login);
-app.post('/signup', signupRequestCheck, createUser);
-
-app.use('/', auth, routes);
+app.use(routes);
 
 // Логирование ошибок
 app.use(errorLogger);
