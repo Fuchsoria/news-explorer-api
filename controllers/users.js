@@ -64,7 +64,7 @@ const login = (req, res, next) => {
 
 const getMyUser = (req, res, next) => {
   User.findOne({ _id: req.user._id })
-    .then((user) => res.status(200).send(user))
+    .then((user) => res.status(200).send({ email: user.email, name: user.name }))
     .catch(next);
 };
 
