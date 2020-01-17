@@ -6,7 +6,8 @@ const { errors } = require('celebrate');
 const routes = require('./routes');
 const { corsCheck } = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { SERVER_PORT, DB, limiter } = require('./configuration/config');
+const { SERVER_PORT, DB } = require('./configuration/config');
+const { limiter } = require('./modules/rateLimit');
 const { errorHandler } = require('./middlewares/errorHandler');
 
 const app = express();
