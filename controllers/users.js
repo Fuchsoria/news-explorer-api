@@ -55,6 +55,7 @@ const login = (req, res, next) => {
             maxAge: 7 * 24 * 60 * 60 * 1000,
             httpOnly: true,
             sameSite: true,
+            domain: '.news-explorer.info',
           })
           .end();
       });
