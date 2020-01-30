@@ -63,6 +63,17 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res, next) => {
+  res
+    .status(200)
+    .clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: true,
+      domain: '.news-explorer.info',
+    })
+    .end();
+};
+
 const getMyUser = (req, res, next) => {
   User.findOne({ _id: req.user._id })
     .then((user) => res.status(200).send({ email: user.email, name: user.name }))
@@ -73,4 +84,5 @@ module.exports = {
   createUser,
   login,
   getMyUser,
+  logout,
 };
