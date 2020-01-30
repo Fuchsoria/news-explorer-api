@@ -4,7 +4,7 @@ const {
   NODE_ENV, JWT_SECRET, DB_LINK, PORT,
 } = process.env;
 
-const allowedDomains = ['http://localhost:8080', 'https://fuchsoria.github.io', 'http://news-explorer.info', 'https://news-explorer.info'];
+const allowedDomains = ['http://localhost:8080', 'https://fuchsoria.github.io', 'http://news-explorer.info', 'https://news-explorer.info', 'http://test.news-explorer.info:8080'];
 
 const devSecret = 'dev-secret';
 const devDbLink = 'mongodb://localhost:27017/newsdb';
