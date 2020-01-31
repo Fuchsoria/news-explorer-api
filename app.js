@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 const routes = require('./routes');
@@ -23,6 +24,7 @@ app.use(corsCheck);
 app.use(limiter);
 app.use(helmet());
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // Логирование запросов
 app.use(requestLogger);

@@ -55,11 +55,23 @@ const login = (req, res, next) => {
             maxAge: 7 * 24 * 60 * 60 * 1000,
             httpOnly: true,
             sameSite: true,
+            domain: '.news-explorer.info',
           })
           .end();
       });
     })
     .catch(next);
+};
+
+const logout = (req, res, next) => {
+  res
+    .status(200)
+    .clearCookie('jwt', {
+      httpOnly: true,
+      sameSite: true,
+      domain: '.news-explorer.info',
+    })
+    .end();
 };
 
 const getMyUser = (req, res, next) => {
@@ -72,4 +84,5 @@ module.exports = {
   createUser,
   login,
   getMyUser,
+  logout,
 };
