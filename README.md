@@ -1,7 +1,7 @@
 # Graduate work news-explorer
 Test Link: [https://news-api.fuchsoria.dev](https://news-api.fuchsoria.dev)
 
-### Функционал:
+### Functional:
 | Request | Response |
 |--|--|
 | GET /users/me | Returns user information (email and name) |
