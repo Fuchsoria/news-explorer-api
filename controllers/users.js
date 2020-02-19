@@ -5,6 +5,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 const BadRequestError = require('../errors/BadRequest');
 const ConflictError = require('../errors/Conflict');
 const { INVALID_EMAIL_OR_PASSWORD } = require('../configuration/constants');
+const { COOKIE_DOMAIN } = require('../configuration/config');
 
 const {
   EMAIL_ALREADY_EXISTS,
@@ -55,7 +56,7 @@ const login = (req, res, next) => {
             maxAge: 7 * 24 * 60 * 60 * 1000,
             httpOnly: true,
             sameSite: true,
-            domain: '.news-explorer.info',
+            domain: COOKIE_DOMAIN,
           })
           .end();
       });
@@ -69,7 +70,7 @@ const logout = (req, res, next) => {
     .clearCookie('jwt', {
       httpOnly: true,
       sameSite: true,
-      domain: '.news-explorer.info',
+      domain: COOKIE_DOMAIN,
     })
     .end();
 };

@@ -1,14 +1,14 @@
-const UNAUTHORIZED = 'Необходима авторизация';
-const INVALID_REQUEST = 'Неверный запрос';
-const INVALID_EMAIL_OR_PASSWORD = 'Неправильная почта или пароль';
-const NOT_FOUND = 'Запрашиваемый ресурс не найден';
-const ARTICLE_NOT_FOUND = 'Статья не существует';
-const NOT_YOUR_ARTICLE = 'Вы можете удалять только свои статьи';
-const EMAIL_ALREADY_EXISTS = 'Пользователь с данной почтой уже зарегистрирован';
-const INVALID_EMAIL = 'Неверный формат электронной почты';
-const INVALID_LINK = 'Неверный формат ссылки';
-const BAD_REQUEST = 'Некорректный запрос';
-const SERVER_ERROR = 'На сервере произошла ошибка';
+const UNAUTHORIZED = 'Authorization required';
+const INVALID_REQUEST = 'Invalid request';
+const INVALID_EMAIL_OR_PASSWORD = 'Invalid email or password';
+const NOT_FOUND = 'The requested resource is not found';
+const ARTICLE_NOT_FOUND = 'Article does not exist';
+const NOT_YOUR_ARTICLE = 'You can only delete your articles';
+const EMAIL_ALREADY_EXISTS = 'A user with this mail is already registered';
+const INVALID_EMAIL = 'Invalid Email Format';
+const INVALID_LINK = 'Invalid link format';
+const BAD_REQUEST = 'Invalid request';
+const SERVER_ERROR = 'An error occurred on the server';
 
 module.exports = {
   UNAUTHORIZED,

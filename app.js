@@ -26,18 +26,14 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Логирование запросов
 app.use(requestLogger);
 
 app.use(routes);
 
-// Логирование ошибок
 app.use(errorLogger);
 
-// Обработчик ошибок celebrate
 app.use(errors());
 
-// Централизованный обработчик ошибок
 app.use(errorHandler);
 
 app.listen(SERVER_PORT);

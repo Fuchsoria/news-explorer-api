@@ -5,8 +5,8 @@ const {
 } = require('../configuration/config');
 
 const limiter = rateLimit({
-  windowMs: limiterWindowMs, // 15 minutes
-  max: limiterMaxRequests, // limit each IP to 100 requests per windowMs
+  windowMs: limiterWindowMs,
+  max: limiterMaxRequests,
 });
 
 module.exports = { limiter };
