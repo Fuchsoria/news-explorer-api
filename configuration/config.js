@@ -10,8 +10,8 @@ const devSecret = 'dev-secret';
 const devDbLink = 'mongodb://localhost:27017/newsdb';
 const devServerPort = 3000;
 
-const limiterWindowMs = 15 * 60 * 1000;
-const limiterMaxRequests = 100;
+const limiterWindowMs = 5 * 60 * 1000;
+const limiterMaxRequests = 1000;
 
 const SECRET = NODE_ENV === 'production' && JWT_SECRET ? JWT_SECRET : devSecret;
 const DB = NODE_ENV === 'production' && DB_LINK ? DB_LINK : devDbLink;
