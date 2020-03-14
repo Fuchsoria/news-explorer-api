@@ -28,6 +28,7 @@ const createArticle = (req, res, next) => {
     owner: req.user._id,
   })
     .then((article) => res.status(201).send({
+      id: article._id,
       keyword: article.keyword,
       title: article.title,
       text: article.text,
